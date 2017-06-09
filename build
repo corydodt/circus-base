@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -euo pipefail
+export IFS=$'\n\t'
+
+docker build . -t corydodt/circus-base:latest
