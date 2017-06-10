@@ -1,5 +1,5 @@
 # vim:set ft=dockerfile:
-FROM alpine:3.5
+FROM alpine:3.6
 
 RUN apk update \
     && apk add --no-cache --virtual build-dependencies \
@@ -8,6 +8,7 @@ RUN apk update \
         linux-headers \
     && apk add --no-cache \
         bash \
+        # coreutils for stdbuf
         coreutils \
         # g++ required for circusd's use of cython
         g++ \
