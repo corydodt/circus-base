@@ -15,3 +15,8 @@ Any `*.ini` files placed in `/etc/circus.d` will be used at startup. So, for
 example, 
 
 - `COPY 00-myapp.ini /etc/circus.d/` (in a Dockerfile)
+
+
+## Release Notes:
+
+* 0.1: Increase stats interval to 1 hour.
