@@ -1,0 +1,34 @@
+# vim:set ft=dockerfile:
+FROM phusion/baseimage:0.9.22
+
+COPY ./requirements.txt /
+
+RUN apt update \
+    && apt --yes dist-upgrade \
+    && rm -rf /var/lib/apt/lists \
+    && apt autoclean \
+    && apt clean
+
+RUN apt update \
+    && apt install --yes python-dev \
+    && apt install --yes \
+        # coreutils for stdbuf
+        coreutils \
+        # g++ required for circusd's use of cython
+        g++ \
+        python \
+        python-pip \
+    && pip install -U --no-cache-dir -r /requirements.txt \
+    && apt remove --yes --autoremove python-dev \
+    && rm -rf /var/lib/apt/lists \
+    && apt autoclean \
+    && apt clean
+
+COPY ./circusbase /opt/Circusbase/circusbase
+COPY ./setup.py /opt/Circusbase/
+RUN pip install --no-cache-dir /opt/Circusbase
+COPY ./circus.ini /etc/
+COPY ./99-stats.ini /etc/circus.d/
+
+ENTRYPOINT ["stdbuf", "-oL", "circusd"]
+CMD ["/etc/circus.ini"]

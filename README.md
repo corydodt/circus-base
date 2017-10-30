@@ -19,4 +19,5 @@ example,
 
 ## Release Notes:
 
+* 0.2: Add remoji() support stream and phusion baseimage Ubuntu support
 * 0.1: Increase stats interval to 1 hour.

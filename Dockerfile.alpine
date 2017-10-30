@@ -1,6 +1,8 @@
 # vim:set ft=dockerfile:
 FROM alpine:3.6
 
+COPY ./requirements.txt /
+
 RUN apk update \
     && apk add --no-cache --virtual build-dependencies \
         python-dev \
@@ -14,9 +16,12 @@ RUN apk update \
         g++ \
         python \
     && python -m ensurepip \
-    && pip install -U --no-cache-dir circus \
+    && pip install -U --no-cache-dir -r /requirements.txt \
     && apk del build-dependencies
 
+COPY ./circusbase /opt/Circusbase/circusbase
+COPY ./setup.py /opt/Circusbase/
+RUN pip install --no-cache-dir /opt/Circusbase
 COPY ./circus.ini /etc/
 COPY ./99-stats.ini /etc/circus.d/
 
