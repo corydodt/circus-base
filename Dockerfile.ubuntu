@@ -1,5 +1,5 @@
 # vim:set ft=dockerfile:
-FROM phusion/baseimage:0.9.22
+FROM ubuntu:16.04
 
 COPY ./requirements.txt /
 
@@ -21,6 +21,7 @@ RUN apt update \
     && pip install -U --no-cache-dir -r /requirements.txt \
     && apt remove --yes --autoremove python-dev \
     && rm -rf /var/lib/apt/lists \
+    && apt autoremove --yes \
     && apt autoclean \
     && apt clean
 

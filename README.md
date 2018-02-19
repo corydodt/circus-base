@@ -17,7 +17,22 @@ example,
 - `COPY 00-myapp.ini /etc/circus.d/` (in a Dockerfile)
 
 
-## Release Notes:
+## Change Log
 
-* 0.2: Add remoji() support stream and phusion baseimage Ubuntu support
-* 0.1: Increase stats interval to 1 hour.
+### [0.3] - February 19, 2018
+#### Changed
+- Base image is ubuntu:16.04
+- Current apt package updates
+#### Removed
+- Alpine support is discontinued
+
+### [0.2] - October 29, 2017
+#### Added
+- Initial usable release
+- `remoji()` in the log streams
+#### Changed
+- Base image is phusion/baseimage
+
+
+[0.3]: https://github.com/corydodt/circus-base/compare/release-0.2...release-0.3
+[0.2]: https://github.com/corydodt/circus-base/tree/release-0.2
