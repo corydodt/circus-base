@@ -17,6 +17,15 @@ example,
 - `COPY 00-myapp.ini /etc/circus.d/` (in a Dockerfile)
 
 
+### Maintainer docs
+
+```
+./build
+docker push corydodt/circus-base:latest
+docker push corydodt/circus-base:$(python -c 'from circusbase import __version__ as v; print v')
+```
+
+
 ## Change Log
 
 ### [0.4] - September 24, 2018
