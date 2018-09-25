@@ -7,5 +7,5 @@ name=corydodt/circus-base
 
 ver=$(python -c 'from circusbase import __version__ as v; print v')
 
-docker build -f Dockerfile.ubuntu . -t $name:latest-ubuntu
-docker tag $name:latest-ubuntu $name:${ver}-ubuntu
+docker build -f Dockerfile . -t $name:latest
+docker tag $name:latest $name:${ver}

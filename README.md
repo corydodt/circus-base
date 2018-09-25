@@ -19,6 +19,10 @@ example,
 
 ## Change Log
 
+### [0.4] - September 24, 2018
+#### Changed
+- Shrink image by using a multi-stage build
+
 ### [0.3] - February 19, 2018
 #### Changed
 - Base image is ubuntu:16.04
@@ -34,5 +38,6 @@ example,
 - Base image is phusion/baseimage
 
 
+[0.4]: https://github.com/corydodt/circus-base/compare/release-0.3...release-0.4
 [0.3]: https://github.com/corydodt/circus-base/compare/release-0.2...release-0.3
 [0.2]: https://github.com/corydodt/circus-base/tree/release-0.2
