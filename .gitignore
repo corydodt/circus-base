@@ -20,7 +20,7 @@ lib64/
 parts/
 sdist/
 var/
-wheels/
+/wheels
 *.egg-info/
 .installed.cfg
 *.egg
@@ -67,7 +67,7 @@ docs/_build/
 # PyBuilder
 target/
 
-# Jupyter Notebook
+# Jupyter NotebookG
 .ipynb_checkpoints
 
 # pyenv
@@ -104,3 +104,5 @@ MANIFEST
 _trial_temp/
 # created by tox
 /Library
+
+/.vscode
