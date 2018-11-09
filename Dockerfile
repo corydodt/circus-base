@@ -2,30 +2,28 @@
 
 ############################################################
 # Begin multi-stage build!
-FROM ubuntu:16.04 as stage1
+FROM ubuntu:16.04 as circusbasestage1
 
-COPY ./requirements.txt /
+ENV cbs1 /circusbasestage1
 
-RUN apt update \
-    && apt install --yes python-dev \
-    && apt install --yes \
-        # coreutils for stdbuf
-        coreutils \
-        # g++ required for circusd's use of cython
-        g++ \
-        python \
-        python-pip \
-    && pip install wheel \
-    && pip wheel --wheel-dir /wheels -r /requirements.txt
+COPY ./requirements.txt $cbs1/requirements.txt
+
+RUN apt update
+RUN apt install --yes \
+        python3-dev \
+        python3-pip
+RUN pip3 install wheel
+RUN pip3 wheel --wheel-dir $cbs1/wheels -r $cbs1/requirements.txt
+
 
 ############################################################
 # Begin stage2!
 FROM ubuntu:16.04
 
-COPY ./requirements.txt /
+ENV cbs1 /circusbasestage1
+ENV VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 
-COPY --from=stage1 /wheels /wheels
-COPY --from=stage1 /opt /opt
+COPY --from=circusbasestage1 ${cbs1} ${cbs1}
 
 RUN apt update \
     && apt --yes dist-upgrade \
@@ -44,8 +42,10 @@ RUN apt update \
         g++ \
         python \
         python-pip \
-    && pip install --no-index --find-links=/wheels -r /requirements.txt \
-    && pip install --no-cache-dir /opt/Circusbase \
+        python3 \
+        python3-pip \
+    && pip3 install --no-index --find-links=$cbs1/wheels -r $cbs1/requirements.txt \
+    && pip3 install --no-cache-dir virtualenvwrapper /opt/Circusbase \
     && rm -rf /var/lib/apt/lists \
     && apt autoremove --yes \
     && apt autoclean \
