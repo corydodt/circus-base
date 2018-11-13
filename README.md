@@ -1,6 +1,10 @@
 # circus-base
 
-### Use:
+A Python-based PID-1 replacement inside a container, with easy setup for applications
+wanting to take advantage of Python-based process management.
+
+
+### Use
 
 Use this container as the base image for any number of possible uses. It
 runs [Circus](https://circus.readthedocs.io/en/latest/), a process manager
@@ -12,9 +16,28 @@ While running, it prints out process statistics every 5 minutes.
   `/etc/circus.d/99-stats.ini`
 
 Any `*.ini` files placed in `/etc/circus.d` will be used at startup. So, for
-example, 
+example,
 
 - `COPY 00-myapp.ini /etc/circus.d/` (in a Dockerfile)
+
+
+### Python 3
+
+As of release 0.5, circus-base uses a Python 3 runtime interpreter. However,
+circus can be used to launch *any* kind of service, regardless of implementation
+details, as long as it has a command line you can run.
+
+Being Python 3 based does have some minor implications for Python 2 applications.
+Notably, Circus' [hooks](http://circus.readthedocs.io/en/latest/for-devs/writing-hooks/#hooks)
+must be written to be Python-3 compatible, but every other component of the program
+can be Python 2 (or any other implementation language) and work fine.
+
+The tradeoff is that now Python 3 programs will finally work fine in circus-base.
+
+
+#### Installing a Python application into a virtualenv
+
+See examples under [doc/example/](doc/example/).
 
 
 ### Maintainer docs
@@ -27,6 +50,12 @@ docker push corydodt/circus-base:$(python -c 'from circusbase import __version__
 
 
 ## Change Log
+
+### [0.5] - 2018-11-08
+#### Changed
+- The runtime environment is now Python 3.6. *In addition*, Python 2.7 applications
+  are still supported by the addition of virtualenvwrapper. See [doc/example/](doc/example)
+  for virtualenvwrapper use with Python 2.7 apps.
 
 ### [0.4] - September 24, 2018
 #### Changed
