@@ -51,9 +51,9 @@ docker push corydodt/circus-base:$(python -c 'from circusbase import __version__
 
 ## Change Log
 
-### [0.5] - 2018-11-08
+### [0.5] - 2018-11-14
 #### Changed
-- The runtime environment is now Python 3.6. *In addition*, Python 2.7 applications
+- The runtime environment is now Python 3.5.1. *In addition*, Python 2.7 applications
   are still supported by the addition of virtualenvwrapper. See [doc/example/](doc/example)
   for virtualenvwrapper use with Python 2.7 apps.
 
@@ -76,6 +76,7 @@ docker push corydodt/circus-base:$(python -c 'from circusbase import __version__
 - Base image is phusion/baseimage
 
 
+[0.5]: https://github.com/corydodt/circus-base/compare/release-0.4...release-0.5
 [0.4]: https://github.com/corydodt/circus-base/compare/release-0.3...release-0.4
 [0.3]: https://github.com/corydodt/circus-base/compare/release-0.2...release-0.3
 [0.2]: https://github.com/corydodt/circus-base/tree/release-0.2
