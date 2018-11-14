@@ -26,9 +26,6 @@ RUN apt update \
     && apt autoclean \
     && apt clean
 
-COPY ./circusbase /opt/Circusbase/circusbase
-COPY ./setup.py /opt/Circusbase/
-
 RUN apt update \
     && apt install --yes \
         # coreutils for stdbuf
@@ -41,6 +38,9 @@ RUN apt update \
     && apt autoclean \
     && apt clean
 
+COPY ./circusbase /opt/Circusbase/circusbase
+COPY ./setup.py /opt/Circusbase/
+
 RUN pip3 install -U --force-reinstall --no-cache-dir pip \
     && export PATH=/usr/local/bin:$PATH \
     && pip3 install --no-index --find-links=$cbs1/wheels -r $cbs1/requirements.txt \
@@ -48,6 +48,9 @@ RUN pip3 install -U --force-reinstall --no-cache-dir pip \
 
 COPY ./circus.ini /etc/
 COPY ./99-stats.ini /etc/circus.d/
+
+ENV LANG C.UTF-8
+ENV LC_ALL C.UTF-8
 
 ENTRYPOINT ["stdbuf", "-oL", "circusd"]
 CMD ["/etc/circus.ini"]
