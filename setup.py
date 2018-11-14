@@ -1,11 +1,13 @@
 from setuptools import setup
 
-from circusbase import _version
+_version = {}
+
+exec(open('circusbase/_version.py').read(), _version)
 
 setup(
   name = 'circusbase',
   packages = ['circusbase'],
-  version = _version.__version__,
+  version = _version['__version__'],
   author = 'Cory Dodt',
   author_email = 'corydodt@gmail.com',
   url = 'https://github.com/corydodt/circus-base',

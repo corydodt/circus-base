@@ -2,8 +2,9 @@
 """
 An option for streaming circus stdout that uses emoji
 """
-import sys
+import codecs
 from datetime import datetime
+import sys
 
 from circus.stream import StdoutStream
 from circus.py3compat import s
@@ -20,9 +21,16 @@ class EmojiStdoutStream(StdoutStream):
       stdout_stream.class = EmojiStdoutStream
       stdout_stream.time_format = '%Y/%m/%d | %H:%M:%S'
     """
+    @property
+    def out(self):
+        """
+        Where we write output
 
-    # Where we write output
-    out = sys.stdout
+        We upgrade it to a utf-8 writer for python 3
+        """
+        if not hasattr(self, '_out'): # pragma: nocover
+            self._out = codecs.getwriter('utf-8')(sys.stdout.detach())
+        return self._out
 
     # Generate a datetime object
     now = datetime.now
@@ -31,7 +39,7 @@ class EmojiStdoutStream(StdoutStream):
     def __init__(self, time_format=None, **kwargs):
         super(EmojiStdoutStream, self).__init__(**kwargs)
         self.time_format = time_format or '%Y-%m-%d %H:%M:%S'
-        self.emoji_tag = (remoji() + u' ' + remoji() + u' ').encode('utf-8')
+        self.emoji_tag = (remoji() + u' ' + remoji() + u' ')
 
     def prefix(self, data):
         """
