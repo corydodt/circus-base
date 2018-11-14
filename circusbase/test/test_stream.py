@@ -42,7 +42,7 @@ def test_stream(stdoutStream):
         'timestamp': timegm(_1109.timetuple())
     }
     stdoutStream(data)
-    # fyi there's a change in the timezone due to our use of timegm, 
+    # fyi there's a change in the timezone due to our use of timegm,
     # and we don't account for it here.
     expected = '2018-11-09 03:11:11 [999] 🤖 💫  | hello dolly\n'
     assert stdoutStream.out.getvalue() == expected

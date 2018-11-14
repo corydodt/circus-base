@@ -27,7 +27,7 @@ Here's a complete example of a Python 2 application container running with circu
   running it with a Python 2 interpreter.
 - `python2_3_hook.py` contains a circus hook. This file is compatible with Python 3
   syntax because it gets run by the same interpreter that's running circus.
-- `00-py2prog.ini` runs the command and tells circus to look for code to import in 
+- `00-py2prog.ini` runs the command and tells circus to look for code to import in
   the Python 2 virtualenv. It also sets the stdout/stderr stream classes.
 - `Dockerfile` sets `VIRTUALENVWRAPPER_PYTHON` and then uses virtualenvwrapper (and `bash -c`)
   to install the Python 2 application.
