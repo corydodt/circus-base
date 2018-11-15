@@ -45,7 +45,7 @@ See examples under [doc/example/](doc/example/).
 ```
 ./build.sh
 docker push corydodt/circus-base:latest
-docker push corydodt/circus-base:$(python -c 'from circusbase import __version__ as v; print v')
+docker push corydodt/circus-base:$(python setup.py --version)
 ```
 
 
