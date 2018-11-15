@@ -5,7 +5,7 @@ export IFS=$'\n\t'
 
 name=corydodt/circus-base
 
-ver=$(python -c 'from circusbase import __version__ as v; print v')
+ver=$(python3 setup.py --version)
 
 docker build -f Dockerfile . -t $name:latest
 docker tag $name:latest $name:${ver}
