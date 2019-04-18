@@ -2,7 +2,6 @@
 """
 An option for streaming circus stdout that uses emoji
 """
-import codecs
 from datetime import datetime
 import sys
 
@@ -23,9 +22,13 @@ class EmojiStdoutStream(StdoutStream):
     """
     @property
     def out(self):
+        """
+        Where we write output
+
+        We upgrade it to a utf-8 writer for python 3
+        """
         if not hasattr(self, '_out'): # pragma: nocover
-            # Where we write output - we upgrade it to a utf-8 writer
-            self._out = codecs.getwriter('utf-8')(sys.stdout.detach())
+            self._out = sys.stdout
         return self._out
 
     # Generate a datetime object
