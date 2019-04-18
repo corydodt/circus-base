@@ -9,7 +9,7 @@ setup(
   packages = ['circusbase'],
   version = _version['__version__'],
   author = 'Cory Dodt',
-  author_email = 'corydodt@gmail.com',
+  author_email = '121705+corydodt@users.noreply.github.com',
   url = 'https://github.com/corydodt/circus-base',
   install_requires = [
     'circus>=0.15,<1.0',

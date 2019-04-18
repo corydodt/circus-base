@@ -36,10 +36,10 @@ COPY ./setup.py /opt/Circusbase/
 
 RUN apt update \
     && apt install --yes \
+        # apt-transport-https for very common private apt repo scenarios
+        apt-transport-https \
         # coreutils for stdbuf
         coreutils \
-        # g++ required for circusd's use of cython
-        g++ \
         python \
         python-pip \
         python3 \
