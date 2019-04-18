@@ -28,6 +28,10 @@ docker push corydodt/circus-base:$(python -c 'from circusbase import __version__
 
 ## Change Log
 
+### [0.4.1] - September 24, 2018
+#### Changed
+- Added apt-transport-https package
+
 ### [0.4] - September 24, 2018
 #### Changed
 - Shrink image by using a multi-stage build
@@ -47,6 +51,7 @@ docker push corydodt/circus-base:$(python -c 'from circusbase import __version__
 - Base image is phusion/baseimage
 
 
+[0.4.1]: https://github.com/corydodt/circus-base/compare/release-0.4...release-0.4.1
 [0.4]: https://github.com/corydodt/circus-base/compare/release-0.3...release-0.4
 [0.3]: https://github.com/corydodt/circus-base/compare/release-0.2...release-0.3
 [0.2]: https://github.com/corydodt/circus-base/tree/release-0.2
