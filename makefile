@@ -11,11 +11,11 @@ RELEASE_VERSION=$(shell python setup.py --version)
 NAME=corydodt/circus-base
 
 circus-base:
-    docker build \
-        -t $(NAME):latest
-        -t $(NAME):$(RELEASE_VERSION)
+	docker build \
+		-t $(NAME):latest \
+		-t $(NAME):$(RELEASE_VERSION) \
 		$$(pwd)
-
+	
 images: circus-base
 
 push: images

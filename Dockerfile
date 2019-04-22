@@ -10,7 +10,6 @@ RUN apt update
 RUN apt install --yes \
         python3-dev \
         python3-pip
-RUN pip3 install wheel
 RUN pip3 wheel --wheel-dir $cbs1/wheels -r $cbs1/requirements.txt
 
 
@@ -36,19 +35,21 @@ RUN apt update \
     && apt install --yes \
         # coreutils for stdbuf
         coreutils \
-        python \
-        python-pip \
-    && pip3 install --no-index --find-links=$cbs1/wheels -r $cbs1/requirements.txt \
-    && pip3 install --no-cache-dir virtualenvwrapper /opt/Circusbase \
+        python3 \
+        python3-pip \
+    && ln -sn /usr/bin/python3 /usr/bin/python \
+    && ln -sn /usr/bin/pip3 /usr/bin/pip \
+    && pip install --no-index --find-links=$cbs1/wheels -r $cbs1/requirements.txt \
+    && pip install --no-cache-dir virtualenvwrapper /opt/Circusbase \
     && rm -rf /var/lib/apt/lists \
     && apt autoremove --yes \
     && apt autoclean \
     && apt clean
 
-RUN pip3 install -U --force-reinstall --no-cache-dir pip \
+RUN pip install -U --force-reinstall --no-cache-dir pip \
     && export PATH=/usr/local/bin:$PATH \
-    && pip3 install --no-index --find-links=$cbs1/wheels -r $cbs1/requirements.txt \
-    && pip3 install --no-cache-dir /opt/Circusbase
+    && pip install --no-index --find-links=$cbs1/wheels -r $cbs1/requirements.txt \
+    && pip install --no-cache-dir /opt/Circusbase
 
 COPY ./circus.ini /etc/
 COPY ./99-stats.ini /etc/circus.d/
