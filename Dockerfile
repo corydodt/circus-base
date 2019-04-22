@@ -1,6 +1,6 @@
 ############################################################
 # Begin multi-stage build!
-FROM ubuntu:16.04 as circusbasestage1
+FROM ubuntu:18.04 as circusbasestage1
 
 ENV cbs1 /circusbasestage1
 
@@ -16,10 +16,9 @@ RUN pip3 wheel --wheel-dir $cbs1/wheels -r $cbs1/requirements.txt
 
 ############################################################
 # Begin stage2!
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 ENV cbs1 /circusbasestage1
-ENV VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 
 COPY --from=circusbasestage1 ${cbs1} ${cbs1}
 
@@ -35,14 +34,10 @@ COPY ./setup.py /opt/Circusbase/
 
 RUN apt update \
     && apt install --yes \
-        # apt-transport-https for very common private apt repo scenarios
-        apt-transport-https \
         # coreutils for stdbuf
         coreutils \
         python \
         python-pip \
-        python3 \
-        python3-pip \
     && pip3 install --no-index --find-links=$cbs1/wheels -r $cbs1/requirements.txt \
     && pip3 install --no-cache-dir virtualenvwrapper /opt/Circusbase \
     && rm -rf /var/lib/apt/lists \
