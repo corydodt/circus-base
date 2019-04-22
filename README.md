@@ -51,13 +51,17 @@ docker push corydodt/circus-base:$(python setup.py --version)
 
 ## Change Log
 
+### [0.5.1] - 2019-04-20
+- Added apt-transport-https to 0.5 series
+- Catch up to newer setuptools in 0.5 series
+
 ### [0.5] - 2018-11-14
 #### Changed
 - The runtime environment is now Python 3.5.1. *In addition*, Python 2.7 applications
   are still supported by the addition of virtualenvwrapper. See [doc/example/](doc/example)
   for virtualenvwrapper use with Python 2.7 apps.
 
-### [0.4.1] - September 24, 2018
+### [0.4.1] - April 19, 2019
 #### Changed
 - Added apt-transport-https package
 
@@ -80,6 +84,7 @@ docker push corydodt/circus-base:$(python setup.py --version)
 - Base image is phusion/baseimage
 
 
+[0.5.1]: https://github.com/corydodt/circus-base/compare/release-0.5...release-0.5.1
 [0.5]: https://github.com/corydodt/circus-base/compare/release-0.4...release-0.5
 [0.4.1]: https://github.com/corydodt/circus-base/compare/release-0.4...release-0.4.1
 [0.4]: https://github.com/corydodt/circus-base/compare/release-0.3...release-0.4

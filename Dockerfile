@@ -30,6 +30,9 @@ RUN apt update \
     && apt autoclean \
     && apt clean
 
+COPY ./circusbase /opt/Circusbase/circusbase
+COPY ./setup.py /opt/Circusbase/
+
 RUN apt update \
     && apt install --yes \
         # apt-transport-https for very common private apt repo scenarios
@@ -46,9 +49,6 @@ RUN apt update \
     && apt autoremove --yes \
     && apt autoclean \
     && apt clean
-
-COPY ./circusbase /opt/Circusbase/circusbase
-COPY ./setup.py /opt/Circusbase/
 
 RUN pip3 install -U --force-reinstall --no-cache-dir pip \
     && export PATH=/usr/local/bin:$PATH \
