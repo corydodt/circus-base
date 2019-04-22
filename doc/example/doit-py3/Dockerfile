@@ -1,4 +1,4 @@
-FROM corydodt/circus-base:0.6.0 as doit-stage1
+FROM corydodt/circus-base:latest
 
 ENV doit /opt/doit
 
