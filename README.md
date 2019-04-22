@@ -28,7 +28,11 @@ docker push corydodt/circus-base:$(python -c 'from circusbase import __version__
 
 ## Change Log
 
-### [0.4.1] - September 24, 2018
+### [0.4.2] - April 22, 2019
+#### Fixed
+- Setuptools version now up-to-date, Closes: #6
+
+### [0.4.1] - April 19, 2019
 #### Changed
 - Added apt-transport-https package
 
@@ -51,6 +55,7 @@ docker push corydodt/circus-base:$(python -c 'from circusbase import __version__
 - Base image is phusion/baseimage
 
 
+[0.4.2]: https://github.com/corydodt/circus-base/compare/release-0.4.1...release-0.4.2
 [0.4.1]: https://github.com/corydodt/circus-base/compare/release-0.4...release-0.4.1
 [0.4]: https://github.com/corydodt/circus-base/compare/release-0.3...release-0.4
 [0.3]: https://github.com/corydodt/circus-base/compare/release-0.2...release-0.3
