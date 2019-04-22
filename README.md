@@ -23,47 +23,37 @@ example,
 
 ### Python 3
 
-As of release 0.5, circus-base uses a Python 3 runtime interpreter. However,
+As of release 0.6.0, circus-base uses a Python 3 runtime interpreter. However,
 circus can be used to launch *any* kind of service, regardless of implementation
 details, as long as it has a command line you can run.
 
-Being Python 3 based does have some minor implications for Python 2 applications.
-Notably, Circus' [hooks](http://circus.readthedocs.io/en/latest/for-devs/writing-hooks/#hooks)
-must be written to be Python-3 compatible, but every other component of the program
-can be Python 2 (or any other implementation language) and work fine.
-
-The tradeoff is that now Python 3 programs will finally work fine in circus-base.
+Hooks that you write must be in Python and will use the Python 3 runtime that
+circus itself is using.
 
 
-#### Installing a Python application into a virtualenv
+### Examples
 
-See examples under [doc/example/](doc/example/).
+Under [doc/example/](doc/example/).
 
 
 ### Maintainer docs
 
 ```
-./build.sh
-docker push corydodt/circus-base:latest
-docker push corydodt/circus-base:$(python setup.py --version)
+make images
+# test with doc/example/doit-py3
+make push
 ```
 
 
 ## Change Log
 
-### [0.5.2] - 2019-04-20
-- Added apt-transport-https to 0.5 series
-- Catch up to newer setuptools in 0.5 series
-
-### [0.5] - 2018-11-14
+### [0.6.0] - April 22, 2019
 #### Changed
-- The runtime environment is now Python 3.5.1. *In addition*, Python 2.7 applications
-  are still supported by the addition of virtualenvwrapper. See [doc/example/](doc/example)
-  for virtualenvwrapper use with Python 2.7 apps.
+- The runtime environment is now Python 3.7.3. (Closes: #9, #1, #3)
 
 ### [0.4.1] - April 19, 2019
 #### Changed
-- Added apt-transport-https package
+- Added apt-transport-https package (Closes: #4)
 
 ### [0.4] - September 24, 2018
 #### Changed
@@ -84,8 +74,7 @@ docker push corydodt/circus-base:$(python setup.py --version)
 - Base image is phusion/baseimage
 
 
-[0.5.2]: https://github.com/corydodt/circus-base/compare/release-0.5...release-0.5.2
-[0.5]: https://github.com/corydodt/circus-base/compare/release-0.4...release-0.5
+[0.6.0]: https://github.com/corydodt/circus-base/compare/release-0.4.1...release-0.6.0
 [0.4.1]: https://github.com/corydodt/circus-base/compare/release-0.4...release-0.4.1
 [0.4]: https://github.com/corydodt/circus-base/compare/release-0.3...release-0.4
 [0.3]: https://github.com/corydodt/circus-base/compare/release-0.2...release-0.3
