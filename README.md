@@ -84,7 +84,7 @@ docker push corydodt/circus-base:$(python setup.py --version)
 - Base image is phusion/baseimage
 
 
-[0.5.1]: https://github.com/corydodt/circus-base/compare/release-0.5...release-0.5.2
+[0.5.2]: https://github.com/corydodt/circus-base/compare/release-0.5...release-0.5.2
 [0.5]: https://github.com/corydodt/circus-base/compare/release-0.4...release-0.5
 [0.4.1]: https://github.com/corydodt/circus-base/compare/release-0.4...release-0.4.1
 [0.4]: https://github.com/corydodt/circus-base/compare/release-0.3...release-0.4
