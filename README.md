@@ -23,7 +23,7 @@ example,
 
 ### Python 3
 
-As of release 0.5, circus-base uses a Python 3 runtime interpreter. However,
+As of release 0.6, circus-base uses a Python 3 runtime interpreter. However,
 circus can be used to launch *any* kind of service, regardless of implementation
 details, as long as it has a command line you can run.
 
@@ -43,24 +43,17 @@ See examples under [doc/example/](doc/example/).
 ### Maintainer docs
 
 ```
-./build.sh
-docker push corydodt/circus-base:latest
-docker push corydodt/circus-base:$(python setup.py --version)
+make images
+# test with doc/example/doit-py3
+make push
 ```
 
 
 ## Change Log
 
-### [0.5.2] - 2019-04-20
-- Added apt-transport-https to 0.5 series
-- Catch up to newer setuptools in 0.5 series
-
-### [0.5] - 2018-11-14
+### [0.6] - 
 #### Changed
-- The runtime environment is now Python 3.5.1. *In addition*, Python 2.7 applications
-  are still supported by the addition of virtualenvwrapper. See [doc/example/](doc/example)
-  for virtualenvwrapper use with Python 2.7 apps.
-
+- The runtime environment is now Python 3.5.1.
 ### [0.4.1] - April 19, 2019
 #### Changed
 - Added apt-transport-https package
@@ -84,8 +77,7 @@ docker push corydodt/circus-base:$(python setup.py --version)
 - Base image is phusion/baseimage
 
 
-[0.5.2]: https://github.com/corydodt/circus-base/compare/release-0.5...release-0.5.2
-[0.5]: https://github.com/corydodt/circus-base/compare/release-0.4...release-0.5
+[0.6]: https://github.com/corydodt/circus-base/compare/release-0.4.1...release-0.6
 [0.4.1]: https://github.com/corydodt/circus-base/compare/release-0.4...release-0.4.1
 [0.4]: https://github.com/corydodt/circus-base/compare/release-0.3...release-0.4
 [0.3]: https://github.com/corydodt/circus-base/compare/release-0.2...release-0.3
