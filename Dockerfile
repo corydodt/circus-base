@@ -53,12 +53,13 @@ RUN apt update \
         python3.7-venv \
         # coreutils for stdbuf
         coreutils \
-    && ln -svn /usr/bin/python3.7 /usr/local/bin/python \
+    && ln -svn /usr/bin/python3.7 /usr/bin/python \
     && python -m ensurepip --default-pip \
     && rm -rf /var/lib/apt/lists \
     && apt autoremove --yes \
     && apt autoclean \
     && apt clean
+
 
 # install circus-base pip requirements
 RUN pip install -U --force-reinstall --no-cache-dir pip \
