@@ -47,6 +47,10 @@ make push
 
 ## Change Log
 
+### [0.6.1] - May 4, 2019
+#### Fixed
+- (#14) /usr/bin/python is now whatever the default is, and /usr/local/bin/python is Python 3.7.
+
 ### [0.6.0] - April 22, 2019
 #### Changed
 - The runtime environment is now Python 3.7.3. (Closes: #9, #1, #3)
@@ -74,6 +78,7 @@ make push
 - Base image is phusion/baseimage
 
 
+[0.6.1]: https://github.com/corydodt/circus-base/compare/release-0.6.0...release-0.6.1
 [0.6.0]: https://github.com/corydodt/circus-base/compare/release-0.4.1...release-0.6.0
 [0.4.1]: https://github.com/corydodt/circus-base/compare/release-0.4...release-0.4.1
 [0.4]: https://github.com/corydodt/circus-base/compare/release-0.3...release-0.4
